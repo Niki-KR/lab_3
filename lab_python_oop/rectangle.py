@@ -8,10 +8,16 @@ class Rectangle(Shape):
     def __init__(self, width, height, colour):
         self.width = width
         self.height = height
-        self.colour = Colour(colour)
+        self.colour = Colour()
+        self.colour.colour = colour
 
-    def __str__(self):
-        return "{}. Цвет: {}. Площадь: {}.".format(self.SHAPE_NAME, self.colour, self.area())
+    def __repr__(self):
+        return "{}. Цвет: {}. Стороны: {} и {}. Площадь: {}.".format(
+            Rectangle.get_shape_name(), self.colour, self.width, self.height, self.area())
 
     def area(self):
         return self.width * self.height
+
+    @classmethod
+    def get_shape_name(cls):
+        return cls.SHAPE_NAME
